@@ -1,0 +1,39 @@
+{
+    "docs": [
+        {
+            "location": "/", 
+            "text": "High-Frequency Trading in the Laboratory\n\n\nEric Aldrich, Dan Friedman, Kristian L\u00f3pez-Vargas\n\n\nUniversity of California Santa Cruz\n\n\nNovember, 2016\n\n\nIntroduction\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.", 
+            "title": "Introduction"
+        }, 
+        {
+            "location": "/#high-frequency-trading-in-the-laboratory", 
+            "text": "Eric Aldrich, Dan Friedman, Kristian L\u00f3pez-Vargas  University of California Santa Cruz  November, 2016", 
+            "title": "High-Frequency Trading in the Laboratory"
+        }, 
+        {
+            "location": "/#introduction", 
+            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.", 
+            "title": "Introduction"
+        }, 
+        {
+            "location": "/about/", 
+            "text": "301 Moved Permanently\n\n\n\n\n301 Moved Permanently\n\n\nnginx/1.6.2", 
+            "title": "Literature"
+        }, 
+        {
+            "location": "/about/", 
+            "text": "301 Moved Permanently\n\n\n\n\n301 Moved Permanently\n\n\nnginx/1.6.2", 
+            "title": "Experiment Design"
+        }, 
+        {
+            "location": "/about/", 
+            "text": "301 Moved Permanently\n\n\n\n\n301 Moved Permanently\n\n\nnginx/1.6.2", 
+            "title": "Pilot Resuls / Discussion"
+        }, 
+        {
+            "location": "/about/", 
+            "text": "301 Moved Permanently\n\n\n\n\n301 Moved Permanently\n\n\nnginx/1.6.2", 
+            "title": "Reseach Plan"
+        }
+    ]
+}

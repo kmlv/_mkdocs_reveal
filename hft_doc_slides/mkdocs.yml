@@ -1,0 +1,12 @@
+site_name: High-Frequency Trading in the Laboratory
+pages:
+- Presentation: 'index.md'
+#- Literature: 'about.md'
+#- Experiment Design: 'about.md'
+#- Pilot Resuls / Discussion: 'about.md'
+#- Reseach Plan: 'about.md'
+theme: readthedocs
+extra_css: [extra.css]
+extra_javascript: []
+site_author: Aldrich, Friedman, López-Vargas
+extra_javascript: ["https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML","js/mathjaxhelper.js"]
