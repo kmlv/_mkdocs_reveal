@@ -201,7 +201,9 @@ If one of the snipers is first, then he makes (and the market maker loses) 0.5s.
 
 ## Experiment Design: Formats: CDA
 
-![CDA experimental interface](img/CDA.png)
+<!--![CDA experimental interface](img/CDA.png)-->
+
+<img src="img/CDA.png" alt="CDA experimental interface" style="width:500px; align-content: center">
 
 <!--Eric, the options for resizing in reveal.js depend on the available extensions and markdown "version" [ideas?]-->
 
@@ -221,7 +223,8 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 * At closing, all standing buy (sell) orders are combined to generate a stair-step demand (supply) curve.
 * Market clearing (equilibrium) price $ p^\star $ is computed, and infra-marginal bids and asks are executed at a uniform price $ p^\star $.
 
-![Timing in FBA](img/timing_FBA.png)
+<!--![Timing in FBA](img/timing_FBA.png)-->
+<img src="img/timing_FBA.png" alt="timing FBA" style="width:500px; align-content: center">
 
 <!--
  The messaging server still continuously relays time-stamped orders (and cancellations etc.) as usual. However, as illustrated in Figure 2, the FBA matching engine divides the trading day into many submission stages (or batching intervals) of equal length. It collects orders continuously but does not immediately process them. Instead, at the end of a submission stage, all new orders received (with positive latency, these must have been sent before , as indicated by the red tick in Figure 1) are combined with unfilled orders from previous stages. The FBA matching engine then generates a stair-step demand curve from the combined bids and a stair-step supply curve from the combined asks. If demand and supply do not intersect, then there is no trade and all orders carry over to the next batch auction, except those that entered the auction as immediate or cancel. 
@@ -244,7 +247,10 @@ If demand and supply do intersect, then the market clears where supply equals de
 
 ## Experiment Design: Formats: FBA
 
-![FBA Interface](img/FBA.png)
+<img src="img/FBA.png" alt="Interface FBA" style="width:500px; align-content: center">
+
+<!--![FBA Interface](img/FBA.png)-->
+
 
 <!--Figure Layout Legend: FBA user interface in basic BCS environment. The action box, information box and profit history box are essentially the same as in Figure 2. In the event history box (top left), the thin black horizontal line segments depict V(t), and the gray vertical lines separate the 5-second batching intervals. The color-coded ticks depict the order book at auction times: blue for own orders, lighter blue for other traders’ orders and light purple for investors. Trader 1’s own filled orders (and those of other traders) are indicated by a green (gray) dot behind the corresponding tick. The red tick shows the clearing price.-->
 <!--Play / Events Legend:

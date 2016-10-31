@@ -1,5 +1,10 @@
 # Notes for building documentation and slides with MkDocs
 
+* Thanks to Eric Aldrich!
+
+* Additions KLV
+
+
 ## Building static website documentation
 
 * Make a new mkdocs directory with the command
@@ -15,6 +20,7 @@
 
   > extra_javascript: ["https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML","js/mathjaxhelper.js"]
 
+--------------------------------------------
 ## Building slides
 
 * Install reveal.js in the MkDocs docs directory with the command
@@ -55,13 +61,16 @@
   > cp ~/Dropbox/Academics/Markdown/myMoon.css dirName/docs/reveal.js/css/theme/
 
 * Build reveal.js slides with the command in the docs directory (or
-  where file.md is located)
+  where file.md is located). This requires you have pandoc installed previously. 
+  There is a pkg download in pandoc github for OSX. 
 
   > pandoc --filter pauseFilter.py -t revealjs -V revealjs-url=reveal.js --css=reveal.js/css/theme/myMoon.css -H reveal.js/js/revealMathJax.js -s file.md -o file.html
 
 * If using MkDocs, issue this command in the directory where file.md
   resides
 
+* Temporary note: KLV Nov 16 could not get 
+--------------------------------------------
 ## Building an academic article
 
 * Kieran Healy has a nice blog post describing how to use pandoc to
