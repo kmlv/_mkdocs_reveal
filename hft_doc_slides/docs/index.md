@@ -8,28 +8,18 @@ University of California, Santa Cruz
 
 --------------------------------------------------------
 
-## Presentation Outline
+## Outline
 
 1. Motivation 
-
 2. Research Plan
-
 3. BCS Model
-
-    * Prediction
-
+    <!--* Prediction-->
 4. Laboratory Implementation (BCS) 
-
-    * CDA
-
-    * FBA 
-    
+    <!--* CDA-->
+    <!--* FBA -->
 5. Pilot Sessions
-
-    * Design
-     
-    * Results
-     
+    <!--* Design-->
+    <!--* Results-->
 6. Next Steps
 
 --------------------------------------------------------
@@ -144,33 +134,20 @@ The second phase will consist of public tournaments hosted on a specially design
 ##  Project Status 
 
 1. Developed simple laboratory environments
-    * Based on Budish, Cramton, Shim (2015)
+    * Based on Budish, Cramton and Shim (2015); BCS hereafter.
     * CDA and FBA
 
-2. Conducted pilot experiments; very preliminary results
+2. Conducted pilot experiments; very preliminary results.
     
-3. Currently developing financial exchange
+3. Currently developing financial exchange.
 
 --------------------------------------------------------
 
 # BCS Model 
 
---------------------------------------------------------
-
-## Basic Environment: Budish, Cramton, Shim (2015)
-<!--This is a summary slide, the next four are the detail-->
-
-* Simplest lab environment is adapted from BCS. 
-* A single asset, single exchange, price is continuous.
-* The fundamental value $V(t)$: exogenous, compound Poisson process, jump rate $ λ_V $, jump distribution $F_V$. 
-* Automated investors: exogenous stream of market buy/sell orders, Poisson arrival rates $λ_I$.
-* Trader control bots/algorithms which place orders on their behalf, conditional on market conditions. 
-
-<!-- The simplest lab environment is adapted from BCS. A single asset is traded on a single exchange, and price is a continuous variable. The fundamental value V(t) is determined exogenously by a compound Poisson process with arrival rate λ_V and jump distribution F_V. Players’ profit opportunities come from “investors” represented by an exogenous stream of unit market orders to buy (limit price very high) and to sell (limit price 0) with Poisson arrival rates λ_B=λ_S=λ_I.-->
-
 ---------------------------------------------------------
 
-## BCS Primitives: Security, Information
+## Model Primitives: Security, Information
 
 * One security $ x $ traded in continuous time.
 
@@ -187,7 +164,7 @@ The second phase will consist of public tournaments hosted on a specially design
 
 ---------------------------------------------------------
 
-## BCS Primitives: Investors and Trading Firms
+## Model Primitives: Investors and Trading Firms
 
 <!--end users of financial markets: mutual funds, pension funds, hedge funds, etc. -->
 
@@ -200,10 +177,44 @@ The second phase will consist of public tournaments hosted on a specially design
     * Entry is endogenous.
     
 * Latency: firms observe V with a small delay, $ \delta_{slow} > 0 $. At a cost $ c_{speed} $, they can reduce latency by $ \Delta\delta = \delta_{slow} - \delta_{fast} > 0 $. 
-      
+
+--------------------------------------------------------
+
+## Continuous Double Auction - CDA 
+
+* Limit order: Buy(sell) 100 shares of APL at $100.00 or less (or more).
+ 
+* Submission to the market at any time.
+
+* Serial processing: orders processed one-at-a-time as they arrive.
+ 
+* Limit order book: set of standing orders.
+
+* Trade: when a new limit order arrives and (contains a bid ≥ lowest ask or an ask ≤ highest bid)
+
+--------------------------------------------------------
+
+## CDA in the BCS Model
+ 
+* Strategies for trading firms (at any moment of trading day):
+
+    1. _Exit_ the market.
+    
+    2. _Market maker_: chooses spread $[0, \bar{S}]$ and speed technology _{fast, slow}_.
+        * Profits upon investor arrivals.
+    
+    3. _Sniper_: chooses speed technology _{fast, slow}_
+        * Profits from value jumps and stale orders (see below). 
+
+* Speed technology reduces latency at a cost of $c_{speed}$ per unit of time. 
+
+<!--Players at any instant choose whether (a) to exit the market and earn a modest flow of income w (= 0 in our implementation), or to participate either as (b) a market maker or (c) a sniper. In the latter two cases players also choose whether to invest in a technology that reduces latency at cost cs per unit of time. 
+A market maker chooses a spread  around the fundamental V ; by choosing s she automatically posts a bid at V - 0.5s and an ask at V + 0.5s. In the CDA she makes profit of 0.5s any time she has the smallest spread when an exogenous market order arrives. Her limit orders automatically track V with some fixed latency ; during that latency, the orders are stale in that they do not reflect the current fundamental value. By paying the cost of speed cs the market maker can reduce the latency to (without loss of generality for our purposes) zero. 
+-->
+
 ---------------------------------------------------------
 
-## BCS Equilibrium in CDA: General
+## Equilibrium of CDA in the BCS Model 
  
 * No asymmetric info, no inventory costs, everyone risk neutral. Yet, Bertrand competition (zero bid-ask spread) does not happen. 
   
@@ -217,21 +228,21 @@ The second phase will consist of public tournaments hosted on a specially design
 
 ---------------------------------------------------------
 
-## BCS Equilibrium in CDA: Complete Statement 
- 
-* Unique Nash Equilibrium
+## Equilibrium of CDA in the BCS Model (complete)
+
+* Unique Nash Equilibrium (s\*, N\*).
 
 * Investors trade immediately upon arrival.
  
-* One trading firm is market maker: sets spread $ s^{*} $, orders tracking V(t)
+* One trading firm is market maker: sets spread $ s^{*} $, orders tracking V(t).
  
 * N − 1 trading firms are stale-quote snipers: submit IOC orders when V(t) jumps.
   
 * Zero profit for market makers: 
-$$ λ_I . \frac{s^\*}{2} - λ_V.\Pr\[J>\frac{s^\*}{2}\].\mathbb{E}( J-\frac{s^\*}{2}|J>\frac{s^\*}{2} ). \frac{N^\*-1}{N^\*} = c_{speed} $$
+$$ λ_I . \frac{s}{2} - λ_V.\Pr(J>\frac{s}{2}).\mathbb{E}( J-\frac{s}{2}|J>\frac{s}{2} ). \frac{N-1}{N} = c_{speed} $$
 
 * Zero profit for snipers: 
-$$ λ_V.\Pr\[J>\frac{s^\*}{2}\].\mathbb{E}( J-\frac{s^\*}{2}|J>\frac{s^\*}{2} ). \frac{1}{N^\*} = c_{speed} $$
+$$ λ_V.\Pr(J>\frac{s}{2}).\mathbb{E}( J-\frac{s}{2}|J>\frac{s}{2} ). \frac{1}{N} = c_{speed} $$
 
 <!--
     Simplifies to lambda_I s*/2 = N* c_speed:     
@@ -243,10 +254,45 @@ $$ λ_V.\Pr\[J>\frac{s^\*}{2}\].\mathbb{E}( J-\frac{s^\*}{2}|J>\frac{s^\*}{2} ).
 
 ---------------------------------------------------------
 
-## BCS Equilibrium in FBA
+## Frequent Batch Auction - FBA 
+
+* Orders are (still) continuously time-stamped.
+
+* Trading day divided into many equal-length _submission stages_ (of length $ \tau $).
+ 
+* At closing, all standing buy (sell) orders are combined to generate a stair-step demand (supply) curve.
+
+* Market clearing (equilibrium) price $ p^\star $ is computed, and infra-marginal bids and asks are executed at a uniform price $ p^\star $.
+
+<!--![Timing in FBA](img/timing_FBA.png)-->
+<!--<img src="img/timing_FBA.png" style="width:500px; align-content: center">-->
+
+<!--
+ The messaging server still continuously relays time-stamped orders (and cancellations etc.) as usual. However, as illustrated in Figure 2, the FBA matching engine divides the trading day into many submission stages (or batching intervals) of equal length. It collects orders continuously but does not immediately process them. Instead, at the end of a submission stage, all new orders received (with positive latency, these must have been sent before , as indicated by the red tick in Figure 1) are combined with unfilled orders from previous stages. The FBA matching engine then generates a stair-step demand curve from the combined bids and a stair-step supply curve from the combined asks. If demand and supply do not intersect, then there is no trade and all orders carry over to the next batch auction, except those that entered the auction as immediate or cancel. 
+
+If demand and supply do intersect, then the market clears where supply equals demand, i.e., all infra-marginal bids and asks are executed at a uniform price p* that clears the market. (The midpoint is used when there is an interval of market-clearing prices. A rationing rule, independent of time stamp within a batching interval, is used when there is an imbalance of supply and demand at a unique market clearing price.) At time t+delta the FBA matching engine notifies the messaging server of the executed trades and price p* (if demand and supply intersect) and the remaining order book.-->
+
+--------------------------------------------------------
+
+## FBA in the BCS Model
+
+* As in CDA, a maker submits one sell (buy) limit order that tracks the fundamental + (-) a chosen spread $ s $.  
+
+* A sniper's bot submits a limit buy (sell) at the newest $V(t)$ each _interval_ with a V-jump. 
+
+* Snipers' orders automatically cancelled if not filled.
+
+* Sniping profitable only when being _fast_ & there is a _slow_ maker & a jump occurs after $ T - \delta_{slow} $ and before $ T - \delta_{fast} $
+ 
+ <!---->
+ <!--Note that such a snipe can be profitable only when (a) the sniper has purchased speed and at least one maker has not and (b) there is a sufficiently large jump in V within the last τ seconds of the batching period. The last condition suggests that sniping is less profitable in FBA than in CDA to the extent that τ is smaller than the batching interval.--> 
+
+
+--------------------------------------------------------
+
+## Equilibrium of FBA in the BCS Model
  
 * Bertrand competition: Zero bid-ask spread.
-
     * For any $ \tau $ (batching length) > 0 (discont. between continuous/serial & discrete/batch).
 
 * (Slow) trading firms supply $ \bar{Q} $ units of liquidity at zero spread.
@@ -257,41 +303,28 @@ $$ \frac{\Delta\delta .\lambda_V}{\tau}.\mathbb{E}(J).\bar{Q} < c_{speed}  $$
 
 <!--The fraction Deltaδ*λjump/tau  is the proportion of time which the fast trader has a profitable sniping opportunity. For finite Q, the condition is satisfied for long enough τ.-->
 
+
 --------------------------------------------------------
 
 # Lab Implementation
 
 --------------------------------------------------------
 
-## Laboratory Implementation: CDAA
+## Basic Lab Environment
+<!--This is a summary slide, the next four are the detail-->
 
-* Available strategies (at any moment of trading day):
-    1. Exit the market
-    2. Participate as _market maker_
-        * choose own spread $[0, \bar{S}]$ and speed technology _{fast, slow}_
-    3. Participate as _sniper_
-        * choose speed technology _{fast, slow}_
+* Simplest lab environment is adapted from BCS.
+ 
+* A single asset, single exchange, price is continuous.
 
-* Speed technology reduces latency (to zero) at a cost of $c_s$ per unit of time. 
+* The fundamental value $V(t)$: exogenous, compound Poisson process, jump rate $ λ_V $, jump distribution $F_V$.
+ 
+* Automated investors: exogenous stream of market buy/sell orders, Poisson arrival rates $λ_I$.
 
-<!--Players at any instant choose whether (a) to exit the market and earn a modest flow of income w (= 0 in our implementation), or to participate either as (b) a market maker or (c) a sniper. In the latter two cases players also choose whether to invest in a technology that reduces latency at cost cs per unit of time. 
-A market maker chooses a spread  around the fundamental V ; by choosing s she automatically posts a bid at V - 0.5s and an ask at V + 0.5s. In the CDA she makes profit of 0.5s any time she has the smallest spread when an exogenous market order arrives. Her limit orders automatically track V with some fixed latency ; during that latency, the orders are stale in that they do not reflect the current fundamental value. By paying the cost of speed cs the market maker can reduce the latency to (without loss of generality for our purposes) zero. 
--->
+* Trader control bots/algorithms which place orders on their behalf, conditional on market conditions and strategies ({out, making/spread, sniping}, {fast, slow})
+ 
 
---------------------------------------------------------
-
-## Laboratory Implementation: CDA
-
-* A _maker_ profits when an investor arrives and executes against her buy/sell order.
-
-* A _sniper_ profits only when $V(t)$ jumps and there are stale orders in the book.
-
-* A _Maker_ loses when her stale offers get executed upon a $V(t)$ jump (gets sniped) 
-
-* All _fast_ (low latency) players have equal chance of being first to respond to any change in $V(t)$. 
-
-<!-- sniping gains/loses are conditional to $\Delta V(t)$ exceeding the (smallest) 0.5s set by a market maker. 
-If one of the snipers is first, then he makes (and the market maker loses) 0.5s. -->
+<!-- The simplest lab environment is adapted from BCS. A single asset is traded on a single exchange, and price is a continuous variable. The fundamental value V(t) is determined exogenously by a compound Poisson process with arrival rate λ_V and jump distribution F_V. Players’ profit opportunities come from “investors” represented by an exogenous stream of unit market orders to buy (limit price very high) and to sell (limit price 0) with Poisson arrival rates λ_B=λ_S=λ_I.-->
 
 --------------------------------------------------------
 
@@ -299,7 +332,7 @@ If one of the snipers is first, then he makes (and the market maker loses) 0.5s.
 
 <!--![CDA experimental interface](img/CDA.png)-->
 
-<img src="img/CDA.png" alt="CDA experimental interface" style="width:500px; align-content: center">
+<img src="img/CDA.png" style="width:500px; align-content: center">
 
 <!--Eric, the options for resizing in reveal.js depend on the available extensions and markdown "version" [ideas?]-->
 
@@ -314,36 +347,7 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 ## Laboratory Implementation: FBA 
 
-* Orders are (still) continuously time-stamped.
-* Trading day divided into many equal-length _submission stages_. 
-* At closing, all standing buy (sell) orders are combined to generate a stair-step demand (supply) curve.
-* Market clearing (equilibrium) price $ p^\star $ is computed, and infra-marginal bids and asks are executed at a uniform price $ p^\star $.
-
-<!--![Timing in FBA](img/timing_FBA.png)-->
-<img src="img/timing_FBA.png" alt="timing FBA" style="width:500px; align-content: center">
-
-<!--
- The messaging server still continuously relays time-stamped orders (and cancellations etc.) as usual. However, as illustrated in Figure 2, the FBA matching engine divides the trading day into many submission stages (or batching intervals) of equal length. It collects orders continuously but does not immediately process them. Instead, at the end of a submission stage, all new orders received (with positive latency, these must have been sent before , as indicated by the red tick in Figure 1) are combined with unfilled orders from previous stages. The FBA matching engine then generates a stair-step demand curve from the combined bids and a stair-step supply curve from the combined asks. If demand and supply do not intersect, then there is no trade and all orders carry over to the next batch auction, except those that entered the auction as immediate or cancel. 
-
-If demand and supply do intersect, then the market clears where supply equals demand, i.e., all infra-marginal bids and asks are executed at a uniform price p* that clears the market. (The midpoint is used when there is an interval of market-clearing prices. A rationing rule, independent of time stamp within a batching interval, is used when there is an imbalance of supply and demand at a unique market clearing price.) At time t+delta the FBA matching engine notifies the messaging server of the executed trades and price p* (if demand and supply intersect) and the remaining order book.-->
-
---------------------------------------------------------
-
-## Laboratory Implementation: FBA 
-
-* Sniper's bot submits a limit buy (sell) at the newest $V(t)$ each _interval_ with a V-jump
-* Snipers' orders automatically cancelled if not filled.
-* Sniping profitable only when being _fast_ & there is a _slow_ maker & jump occurs within the last than $ \tau $ seconds of the interval. 
- 
- <!---->
- <!--Note that such a snipe can be profitable only when (a) the sniper has purchased speed and at least one maker has not and (b) there is a sufficiently large jump in V within the last τ seconds of the batching period. The last condition suggests that sniping is less profitable in FBA than in CDA to the extent that τ is smaller than the batching interval.--> 
-
-
---------------------------------------------------------
-
-## Laboratory Implementation: FBA 
-
-<img src="img/FBA.png" alt="Interface FBA" style="width:500px; align-content: center">
+<img src="img/FBA.png" style="width:500px; align-content: center">
 
 <!--![FBA Interface](img/FBA.png)-->
 
@@ -355,30 +359,15 @@ If demand and supply do intersect, then the market clears where supply equals de
 
 --------------------------------------------------------
 
-# Pilot Sessions
+# Pilot Experiments
 
 --------------------------------------------------------
 
-
-## Pilot Experiment: Setting, Session   
-
-* Pilot experiment with a Redwood II prototype of CDA and FBA engines
-
-* Per market format:
-
-    * Three trading days (periods), five-minutes each.
-
-    * In each period, two markets with four traders each. 
-    
-* Session lasted approx 100 minutes.
-    
---------------------------------------------------------
-
-## Pilot Experiment: Setting, Session   
+## Pilot Experiment: Design    
 
 * Exogenous processes: 
     
-    * Stochastic realizations using $λ_V=4$, $λ_I= 3$, $F_V = N(0,0.5)$, $c_s=\\$0.01/sec$, $τ = 0.5 sec$, and $V_0 = 100$.
+    * Stochastic realizations using $λ_V=4$, $λ_I= 3$, $F_V = N(0,0.5)$, $c_s=\\$0.01/sec$ and $ τ = 0.5 sec $, and $V_0 = 100$.
     
     * Realizations matched across groups and formats.
 
@@ -390,6 +379,21 @@ If demand and supply do intersect, then the market clears where supply equals de
 
 <!--(In our pilot experiment, the ratio is 0.5/5 = 0.10; in more realistic settings it might be closer to 0.01.)-->
 
+--------------------------------------------------------
+
+
+## Pilot Experiment: Setting   
+
+* Pilot experiment with a Redwood II prototype of CDA and FBA engines
+
+* Two market format:
+
+    * Three trading days (periods), five-minutes each.
+
+    * In each period, two markets with four traders each. 
+    
+* Session lasted approx 100 minutes.
+    
 
 --------------------------------------------------------
 
@@ -531,3 +535,40 @@ If demand and supply do intersect, then the market clears where supply equals de
 <!--Exploring these differing environments will contribute to fundamental knowledge regarding financial market design. By introducing features one at a time, we will make strong inferences about which environmental aspects shape observed outcomes. By holding constant the realized stochastic process across market formats in any given environment, we can draw causal conclusions regarding comparative performance. For example, we will be able to make clear statements such as “relative to the basic CDA baseline, the IEX format lowers trading cost by 5-8% in normal environment X, but increases value-at-risk by 20-30% in stressful environment Y.” Such statements should help focus conventional econometric analysis of market data, and even by themselves should be helpful for regulators and exchange officials. -->
 
 <!--We have started the lab stage developing simple environments that allow for HFT. Our current progress and preliminary evidence are encouraging on the feasibility of the project and and the quality of the collected evidence. Further evidence from the laboratory and the implementation of tournaments will constitute valuable scientific knowledge on which formats best promote financial market liquidity and stability and, thus, help improve the design of financial markets. Our research infrastructure will be an important contribution for future research on financial market design. -->
+
+--------------------------------------------------
+
+##  Thanks to 
+
+* Center for Analytical Finance.
+
+* _
+
+
+<!--
+
+DRAFT ZONE 
+
+--------------------------------------------------------
+
+
+
+--------------------------------------------------------
+
+## Continuous Double Auction - CDA 
+
+* A _maker_ profits when an investor arrives and executes against her buy/sell order.
+
+* A _sniper_ profits only when $V(t)$ jumps and there are stale orders in the book.
+
+* A _Maker_ loses when her stale offers get executed upon a $V(t)$ jump (gets sniped) 
+
+* All _fast_ (low latency) players have equal chance of being first to respond to any change in $V(t)$. 
+
+<!-- sniping gains/loses are conditional to $\Delta V(t)$ exceeding the (smallest) 0.5s set by a market maker. 
+If one of the snipers is first, then he makes (and the market maker loses) 0.5s. -->
+      
+
+
+
+-->
