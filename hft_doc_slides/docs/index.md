@@ -1,4 +1,4 @@
-## High-Frequency Trading in the Laboratory
+## Experiments in High-Frequency Trading 
 
 
 Eric Aldrich,  Dan Friedman,  Kristian López-Vargas 
@@ -12,17 +12,25 @@ University of California, Santa Cruz
 
 1. Motivation 
 
-2. Research Design
+2. Research Plan
 
-4. Project Status
+3. BCS Model
 
-5. Laboratory Implementation 
+    * Prediction
 
-    * Design 
+4. Laboratory Implementation (BCS) 
 
+    * CDA
+
+    * FBA 
+    
+5. Pilot Sessions
+
+    * Design
+     
     * Results
-
-6. Further Research and Discussion
+     
+6. Next Steps
 
 --------------------------------------------------------
 
@@ -69,7 +77,7 @@ University of California, Santa Cruz
 
 --------------------------------------------------------
 
-# Project 
+# Research Plan
 
 --------------------------------------------------------
 
@@ -145,7 +153,7 @@ The second phase will consist of public tournaments hosted on a specially design
 
 --------------------------------------------------------
 
-# Laboratory
+# BCS Model 
 
 --------------------------------------------------------
 
@@ -249,6 +257,9 @@ $$ \frac{\Delta\delta .\lambda_V}{\tau}.\mathbb{E}(J).\bar{Q} < c_{speed}  $$
 
 <!--The fraction Deltaδ*λjump/tau  is the proportion of time which the fast trader has a profitable sniping opportunity. For finite Q, the condition is satisfied for long enough τ.-->
 
+--------------------------------------------------------
+
+# Lab Implementation
 
 --------------------------------------------------------
 
@@ -343,6 +354,11 @@ If demand and supply do intersect, then the market clears where supply equals de
  Snipers not depicted in the figure. -->
 
 --------------------------------------------------------
+
+# Pilot Sessions
+
+--------------------------------------------------------
+
 
 ## Pilot Experiment: Setting, Session   
 
@@ -464,6 +480,10 @@ If demand and supply do intersect, then the market clears where supply equals de
 
 --------------------------------------------------------
 
+# Next Steps
+
+--------------------------------------------------------
+
 ## Production Experiments: 
 
 * Results are interesting but far from conclusive.
@@ -475,10 +495,6 @@ If demand and supply do intersect, then the market clears where supply equals de
 * We need feedback!
 
 <!--These pilot results are encouraging but far from conclusive. More replications of the current setup, sessions with other parameter configurations (e.g. stressful periods), and robustness checks (e.g. not showing other traders’ speed status or spread) are needed. Of course, we must also implement the IEX and EBS variants of the CDA. -->
-
---------------------------------------------------------
-
-# Further Research and Discussion
 
 --------------------------------------------------------
 
@@ -506,7 +522,7 @@ If demand and supply do intersect, then the market clears where supply equals de
 
 --------------------------------------------------
 
-##  Discussion
+##  Discussion:
 
 * Evidence from the laboratory and tournaments will provide knowledge to improve the design of financial markets.
 
