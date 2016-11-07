@@ -1,10 +1,14 @@
 site_name: High-Frequency Trading in the Laboratory
 pages:
-- Presentation: 'index.md'
+- UCSC Presentation: 'index.md'
+- BCS: 'BCS.md'
+- Tucson Presentation: 'Tucson.md'
+
 #- Literature: 'about.md'
 #- Experiment Design: 'about.md'
 #- Pilot Resuls / Discussion: 'about.md'
 #- Reseach Plan: 'about.md'
+
 theme: readthedocs
 extra_css: [extra.css]
 extra_javascript: []

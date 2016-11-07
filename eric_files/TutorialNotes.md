@@ -69,7 +69,10 @@
 * If using MkDocs, issue this command in the directory where file.md
   resides
 
-* Temporary note: KLV Nov 16 could not get 
+* Temporary note: KLV Nov 16 could not get filter to work 
+
+    > mkdocs serve
+
 --------------------------------------------
 ## Building an academic article
 

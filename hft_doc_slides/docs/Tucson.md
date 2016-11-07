@@ -6,27 +6,8 @@ Eric Aldrich,  Dan Friedman,  Kristian López-Vargas
 
 University of California, Santa Cruz
 
---------------------------------------------------------
+Experimental Finance Conference | Tucson, 2016
 
-## Presentation Outline
-
-1. Motivation 
-
-2. Research Design
-
-4. Project Status
-
-5. Laboratory Implementation 
-
-    * Design 
-
-    * Results
-
-6. Further Research and Discussion
-
---------------------------------------------------------
-
-# Motivation 
 
 --------------------------------------------------------
 
@@ -36,24 +17,9 @@ University of California, Santa Cruz
 
 * High-frequency trading (HFT) firms account for a large fraction of trades worldwide.
 
-<!--Telecommunications technology and automated order placement has caused trading latencies to rapidly decline over the last decade from seconds to milliseconds and microseconds. Market floor specialists have disappeared, and high-frequency trading (HFT) firms now account for a large and increasing fraction of trades worldwide. -->
+* Proponents: HFT increases market liquidity and reduces transaction costs. <!--maybe cite: Some academic studies ?-->
 
-
---------------------------------------------------------
-
-## Motivation 
-
-* Proponents: 
-
-    * HFT increases market liquidity and reduces transaction costs. <!--maybe cite: Some academic studies ?-->
-
-* Opponents: 
-
-    * The multi-billion-dollar cost of HFT infrastructure is (indirectly) borne by ordinary investors.
-    
-    * HFT liquidity vanishes when most needed, destabilizing financial markets.
-
-<!--Proponents of HFT claim that HFT has increased market liquidity and reduced transaction costs; and existing academic studies, on balance, tend to support that position. Opponents argue that the multi-billion-dollar cost of HFT infrastructure is indirectly borne by ordinary investors, that HFT liquidity vanishes when most needed, and that HFT could destabilize financial markets.-->
+* Opponents: Cost of HFT infrastructure is borne by ordinary investors; HFT liquidity vanishes when most needed.
 
 --------------------------------------------------------
 
@@ -69,11 +35,7 @@ University of California, Santa Cruz
 
 --------------------------------------------------------
 
-# Project 
-
---------------------------------------------------------
-
-##  Research Design: General 
+##  General Research Project
 
 * We use the experimental method to study and compare relevant market formats.
 
@@ -87,69 +49,11 @@ University of California, Santa Cruz
 
 --------------------------------------------------------
 
-##  Research Design: Market formats - CDA
-
-* Baseline market format: the Continuous Double Auction (CDA) 
-
-    * Organizes trade in near all major exchanges.
-     
-    * Trading occurs at any moment and orders are processed with price-time priority 
- 
-    * => speed technology is crucial.
-    
-<!--The baseline market format is the Continuous Double Auction (CDA) which organizes trade in near all major exchanges around the world. Since under CDA trading occurs at any moment and orders are processed with price-time priority, speed technology is crucial.-->
+## Laboratory
 
 --------------------------------------------------------
 
-##  Research Design: Market formats - Alternatives
-     
-* Three alternative formats (all attempt to keep the pros of CDA and to alter the incentives for speed).
-   
-    1. IEX: delays incoming orders by 350 $\mu$S, allows hidden, “pegged” orders;
-    
-    2. EBS: within a narrow time window, randomizes the sequence in which orders are processed;
-     
-    3. Frequent batch auction (FBA): equal priority to orders received in the same batch (e.g. a tenth of a second).
-    
-    <!-- We plan on studying four alternative formats that attempt to keep the virtues of CDA while changing these incentives for speed. We focus in three alternatives: 1) the IEX format which delays incoming orders by 350 microseconds but allows hidden, “pegged” orders; 2) the EBS format which, within a narrow time window, randomizes the sequence in which orders are processed; and 3) the frequent batch auction (FBA) which gives equal priority to all orders received in the same batch of, say, a tenth of a second.-->
-    
------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-##  Research Design: Project Stages 
-
-This project has two phases:
-
-1. Laboratory experiments:
-    * Simple environments, adding relevant features of modern exchanges. 
-    * Participants tune algorithms that place orders on their behalf. 
-    
-2. Public tournaments:
-    * Hosted on a financial exchange that emulates modern equities exchanges.
-    * State-of-the art communication protocols.
-    * Participants: teams from industry and research institutions.
-
-<!--The first phase consists of laboratory experiments, starting with simple environments and increasingly adding the relevant features of modern exchanges. Human participants will tune algorithms that submit orders to a financial exchange on their behalf. 
-The second phase will consist of public tournaments hosted on a specially designed financial exchange that emulates leading U.S. equities exchanges endowed with state-of-the art communication protocols. Tournament participants will be teams from industry and research institutions.-->
-
---------------------------------------------------------
-
-##  Project Status 
-
-1. Developed simple laboratory environments
-    * Based on Budish, Cramton, Shim (2015)
-    * CDA and FBA
-
-2. Conducted pilot experiments; very preliminary results
-    
-3. Currently developing financial exchange
-
---------------------------------------------------------
-
-# Laboratory
-
---------------------------------------------------------
-
-## Basic Environment: Budish, Cramton, Shim (2015)
+## Environment : Budish, Cramton, Shim (2015)
 <!--This is a summary slide, the next four are the detail-->
 
 * Simplest lab environment is adapted from BCS. 
@@ -160,97 +64,8 @@ The second phase will consist of public tournaments hosted on a specially design
 
 <!-- The simplest lab environment is adapted from BCS. A single asset is traded on a single exchange, and price is a continuous variable. The fundamental value V(t) is determined exogenously by a compound Poisson process with arrival rate λ_V and jump distribution F_V. Players’ profit opportunities come from “investors” represented by an exogenous stream of unit market orders to buy (limit price very high) and to sell (limit price 0) with Poisson arrival rates λ_B=λ_S=λ_I.-->
 
----------------------------------------------------------
 
-## BCS Primitives: Security, Information
-
-* One security $ x $ traded in continuous time.
-
-* $ x $ can be costlessly liquidated at fundamental value $ V(t) $. 
-
-* There is publicly observable signal of the $ V(t) $.  
- <!--no asymmetric information, costs of inventory, etc "best case scenario for price discovery"-->
-
-* $ V(t) $ evolves with compound Poisson with jump rate $ \lambda_V $ and jump distribution $ F_V $ 
-<!--  Finite support; Symmetric with mean zero-->
-
-* $ J $ distribution of the jump size.  
-<!--abs value of F_v realizations-->
-
----------------------------------------------------------
-
-## BCS Primitives: Investors and Trading Firms
-
-<!--end users of financial markets: mutual funds, pension funds, hedge funds, etc. -->
-
-* Investors (liquidity/noise traders):
-    * Arrive randomly with fixed need to buy/sell 1 unit at a Poisson arrival rate of $ λ_I $. 
-    * Trade immediately upon arrival: they are only takers  of liquidity. 
-
-* Trading Firms (HFTs, algorithmic traders, makers):
-    * No intrinsic demand: profit/lose from trading at prices $ p \neq V(t) $.
-    * Entry is endogenous.
-    
-* Latency: firms observe V with a small delay, $ \delta_{slow} > 0 $. At a cost $ c_{speed} $, they can reduce latency by $ \Delta\delta = \delta_{slow} - \delta_{fast} > 0 $. 
-      
----------------------------------------------------------
-
-## BCS Equilibrium in CDA: General
- 
-* No asymmetric info, no inventory costs, everyone risk neutral. Yet, Bertrand competition (zero bid-ask spread) does not happen. 
-  
-* This is due to sniping incentives:
-    
-    * When V jumps, the maker sends a replace order, and everyone else tries to buy (sell) the stale quote and liquidate at new fundamental ("snipe").
-    
-    * Sniping probability $ \frac{N-1}{N} $
-    
-    * Sniping generates arbitrage rents paid by investors.
-
----------------------------------------------------------
-
-## BCS Equilibrium in CDA: Complete Statement 
- 
-* Unique Nash Equilibrium
-
-* Investors trade immediately upon arrival.
- 
-* One trading firm is market maker: sets spread $ s^{*} $, orders tracking V(t)
- 
-* N − 1 trading firms are stale-quote snipers: submit IOC orders when V(t) jumps.
-  
-* Zero profit for market makers: 
-$$ λ_I . \frac{s^\*}{2} - λ_V.\Pr\[J>\frac{s^\*}{2}\].\mathbb{E}( J-\frac{s^\*}{2}|J>\frac{s^\*}{2} ). \frac{N^\*-1}{N^\*} = c_{speed} $$
-
-* Zero profit for snipers: 
-$$ λ_V.\Pr\[J>\frac{s^\*}{2}\].\mathbb{E}( J-\frac{s^\*}{2}|J>\frac{s^\*}{2} ). \frac{1}{N^\*} = c_{speed} $$
-
-<!--
-    Simplifies to lambda_I s*/2 = N* c_speed:     
-    "all of the expenditure by trading  rms on speed technology ultimately is borne by investors, via the bid-ask spread."..."Arms-race prize = expenditures on speed = cost to investors"
-  
-    * Equilibrium Condition Exo Entry: Revenue from investors = rents to trading firms. 
-    $$ λ_I . \frac{s}{2} = λ_V.\Pr\[J>\frac{s}{2}\].\mathbb{E}( J-\frac{s}{2}|J>\frac{s}{2} ) $$
--->
-
----------------------------------------------------------
-
-## BCS Equilibrium in FBA
- 
-* Bertrand competition: Zero bid-ask spread.
-
-    * For any $ \tau $ (batching length) > 0 (discont. between continuous/serial & discrete/batch).
-
-* (Slow) trading firms supply $ \bar{Q} $ units of liquidity at zero spread.
-
-* If $ \tau $ sufficiently larger than speed differential $ \Delta δ $ => no one invests in speed:
-
-$$ \frac{\Delta\delta .\lambda_V}{\tau}.\mathbb{E}(J).\bar{Q} < c_{speed}  $$
-
-<!--The fraction Deltaδ*λjump/tau  is the proportion of time which the fast trader has a profitable sniping opportunity. For finite Q, the condition is satisfied for long enough τ.-->
-
-
---------------------------------------------------------
+-------------------------------------------------
 
 ## Laboratory Implementation: CDA
 
@@ -405,62 +220,12 @@ If demand and supply do intersect, then the market clears where supply equals de
 
 <!--The relevant performance metrics here are for transactions cost and informational efficiency; long-run stability issues are less relevant in this simple stylized environment.  Mean spread in FBA period 3 was only 0.22% vs 0.41% in CDA, both in the neighborhood of the predicted 0% and 0.32%, respectively; and overall mean spreads were only about 0.10% higher. FBA was also more informationally efficient: in every period, both CDA markets had higher RMSE than either FBA market; the period 3 averages were about 0.42% in CDA and 0.32% in FBA. -->
 
+--------------------------------------------------------
 
----------------------------------------------------
+## Pilot Experiment: Results
 
-## Detailed Results: Fraction of Time Spent in Each Role
+Summary Table / Chart
 
-| | CDA | | | FBA | | |
-| --- | --- | --- | --- | --- | --- | --- |
-| | OUT | MAKER | SNIPE | OUT | MAKER | SNIPE |
-| P1G1 | 0.0439 | 0.648 | 0.308 | 0.00711 | 0.672 | 0.32 |
-| P1G2 | 0.0111 | 0.622 | 0.367 | 0.0169 | 0.666 | 0.317 |
-| P2G1 | 0.0141 | 0.675 | 0.311 | 0.00549 | 0.744 | 0.25 |
-| P2G2 | 0.033 | 0.569 | 0.398 | 0.00954 | 0.74 | 0.25 |
-| P3G1 | 0.0301 | 0.545 | 0.425 | 0.00559 | 0.764 | 0.231 |
-| P3G2 | 0.00607 | 0.654 | 0.34 | 0.00842 | 0.834 | 0.157 |
-
---------------
-
-## Detailed Results: Fraction of Time Spent in Each Speed Category
-
-| | CDA | | FBA | |
-| --- | --- | --- | --- | --- |
-| | Slow | Fast | Slow | Fast |
-| P1G1 | 0.724 | 0.276 | 0.731 | 0.269 |
-| P1G2 | 0.413 | 0.587 | 0.699 | 0.301 |
-| P2G1 | 0.487 | 0.513 | 0.639 | 0.361 |
-| P2G2 | 0.443 | 0.557 | 0.915 | 0.0854 |
-| P3G1 | 0.403 | 0.597 | 0.846 | 0.154 |
-| P3G2 | 0.278 | 0.722 | 0.933 | 0.0671 |
-
-----------------------------------------------------
-
-## Detailed Results: Average Inside Spread
-
-| | CDA | FBA |
-| --- | --- | --- |
-| | MeanSpread | MeanSpread |
-| P1G1 | 0.968 | 0.361 |
-| P1G2 | 0.625 | 0.518 |
-| P2G1 | 0.475 | 0.358 |
-| P2G2 | 0.435 | 0.149 |
-| P3G1 | 0.422 | 0.312 |
-| P3G2 | 0.372 | 0.113 |
-
-----------------------------------------------------
-
-## Detailed Results: Trade Statistics
-
-| | CDA | | FBA | |
-| --- |: --- :| --- | : --- : | --- |
-|      | *NumTrades* | *RMSE* | *NumTrades* | *RMSE* |
-| P1G1 | 104 | 0.00555 | 89 | 0.00376 |
-| P1G2 | 115 | 0.00441 | 86 | 0.00457 |
-| P2G1 | 141 | 0.00347 | 88 | 0.00297 |
-| P2G2 | 140 | 0.00386 | 82 | 0.00218 |
-| P3G1 | 159 | 0.00382 | 98 | 0.00323 |
-| P3G2 | 157 | 0.00388 | 84 | 0.0027  |
 
 --------------------------------------------------------
 
@@ -472,29 +237,10 @@ If demand and supply do intersect, then the market clears where supply equals de
  
 * More importantly, we are implementing IEX and EBS variants of the CDA.
  
-* We need feedback!
+* More Realistic Environments (latent fundamental, price grid, fragmented markets, etc).
+    * Need feedback.
 
 <!--These pilot results are encouraging but far from conclusive. More replications of the current setup, sessions with other parameter configurations (e.g. stressful periods), and robustness checks (e.g. not showing other traders’ speed status or spread) are needed. Of course, we must also implement the IEX and EBS variants of the CDA. -->
-
---------------------------------------------------------
-
-# Further Research and Discussion
-
---------------------------------------------------------
-
-## More Realistic Environments 
-
-1. Variable and asymmetric arrival intensities and jump distributions. 
-
-2. Latent fundamental.
- 
-3. Discrete price grid.
- 
-4. Historical order flow.
- 
-5. Fragmented markets and exchange competition.
- 
-6. Automated market makers and investors. 
 
 <!--Most importantly, we must go beyond the simple BCS environment with more realistic features as follows. -->
 <!--Variable and asymmetric arrival intensities and jump distributions. The Poisson parameter λ_V  can change exogenously during a trading period, and the market buy and sell parameters can take distinct values so that λ_B≠λ_S. The jump distribution can also shift during the trading period. -->
@@ -515,3 +261,6 @@ If demand and supply do intersect, then the market clears where supply equals de
 <!--Exploring these differing environments will contribute to fundamental knowledge regarding financial market design. By introducing features one at a time, we will make strong inferences about which environmental aspects shape observed outcomes. By holding constant the realized stochastic process across market formats in any given environment, we can draw causal conclusions regarding comparative performance. For example, we will be able to make clear statements such as “relative to the basic CDA baseline, the IEX format lowers trading cost by 5-8% in normal environment X, but increases value-at-risk by 20-30% in stressful environment Y.” Such statements should help focus conventional econometric analysis of market data, and even by themselves should be helpful for regulators and exchange officials. -->
 
 <!--We have started the lab stage developing simple environments that allow for HFT. Our current progress and preliminary evidence are encouraging on the feasibility of the project and and the quality of the collected evidence. Further evidence from the laboratory and the implementation of tournaments will constitute valuable scientific knowledge on which formats best promote financial market liquidity and stability and, thus, help improve the design of financial markets. Our research infrastructure will be an important contribution for future research on financial market design. -->
+
+
+
