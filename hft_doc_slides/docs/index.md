@@ -263,7 +263,7 @@ $$ \frac{\Delta\delta .\lambda_V}{\tau}.\mathbb{E}(J).\bar{Q} < c_{speed}  $$
 
 --------------------------------------------------------
 
-## Laboratory Implementation: CDA
+## Laboratory Implementation: CDAA
 
 * Available strategies (at any moment of trading day):
     1. Exit the market
