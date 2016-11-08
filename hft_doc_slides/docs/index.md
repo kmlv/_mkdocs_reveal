@@ -362,24 +362,6 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 --------------------------------------------------------
 
-## Pilot Experiment: Design    
-
-* Exogenous processes: 
-    
-    * Stochastic realizations using $λ_V=4$, $λ_I= 3$, $F_V = N(0,0.5)$, $c_s=\\$0.01/s$ and $ \delta_{slow} = 0.5s $, and $V_0 = 100$.
-    
-    * Realizations matched across groups and formats.
-
-* In FBA, batch interval was 5 secs; reporting lag was essentially zero; default latency / interval = 0.1.
-
-<!--(In our pilot experiment, the ratio is 0.5/5 = 0.10; in more realistic settings it might be closer to 0.01.)
-<!--On August 10, 2016 we conducted a pilot experiment with a Redwood II prototype of CDA and FBA matching engines, using the interfaces shown in Figures 2 and 3. In each format, two groups of four players each completed three five-minute periods. Each period, stochastic realizations using λ_V= 4, λ_B=λ_S=λ_I= 3, F_V  = N(0,0.5), cs=$0.01/sec, τ = 0.5 sec and initial V = 100 were matched across groups and formats; each trading period here roughly translates to a 80 second segment on the NASDAQ OMX exchange for the high-volume SPY contract. In FBA, the batching interval was 5 seconds and the reporting lag was essentially zero.-->
-<!--We found a weak uptrend for snipers in CDA, but the share never exceeded 43%; in equilibrium of the BCS model the sniper share is 75%. In FBA the sniper share trended down, as predicted in BCS equilibrium, and fell below 20% in period 3. Almost all other players were makers; Out shares were always miniscule. The share of traders choosing speed trended up in CDA as predicted, reaching almost ⅔ in period 3, and trended down (also consistent with prediction) in FBA, falling to 11% in period 3. -->
-
-<!--(In our pilot experiment, the ratio is 0.5/5 = 0.10; in more realistic settings it might be closer to 0.01.)-->
-
---------------------------------------------------------
-
 
 ## Pilot Experiment: Setting   
 
@@ -392,6 +374,36 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
     * In each period, two markets with four traders each. 
     
 * Session lasted approx 100 minutes.
+
+--------------------------------------------------------
+
+## Pilot Experiment: Design    
+
+* Exogenous processes: 
+    
+    * Stochastic realizations using
+    
+        - $λ_V=4$: Fundamental value jumps once every 4 seconds. Using historical data on the SPY ETF, this means a 5-minute lab session corresponds to about 1.5 minutes of actual market trading.
+        
+        - $λ_I= 3$: Investor arrivals once every 3 seconds.
+        
+        - $V_0 = 100$: Order of magnitude equal to most liquid equities.
+        
+        - $F_V = N(0,0.5)$: Standard deviation is relatively large to price increments in data, but the magnitude is arbitrary if subjects can scale spreads accordingly.
+        
+        - $c_s=\\$0.01/s$: Roughly twice the cost (per symbol, per second of a trading day) for a premier microwave service.
+        
+        - $ \delta_{slow} = 0.5s $: About 10 times larger than actual Chicago -> NY latency, after accounting for our time scaling.
+    
+    * Realizations matched across groups and formats.
+
+* In FBA, batch interval was 5 secs (1.25 secs, market time); reporting lag was essentially zero; default latency / interval = 0.1.
+
+<!--(In our pilot experiment, the ratio is 0.5/5 = 0.10; in more realistic settings it might be closer to 0.01.)
+<!--On August 10, 2016 we conducted a pilot experiment with a Redwood II prototype of CDA and FBA matching engines, using the interfaces shown in Figures 2 and 3. In each format, two groups of four players each completed three five-minute periods. Each period, stochastic realizations using λ_V= 4, λ_B=λ_S=λ_I= 3, F_V  = N(0,0.5), cs=$0.01/sec, τ = 0.5 sec and initial V = 100 were matched across groups and formats; each trading period here roughly translates to a 80 second segment on the NASDAQ OMX exchange for the high-volume SPY contract. In FBA, the batching interval was 5 seconds and the reporting lag was essentially zero.-->
+<!--We found a weak uptrend for snipers in CDA, but the share never exceeded 43%; in equilibrium of the BCS model the sniper share is 75%. In FBA the sniper share trended down, as predicted in BCS equilibrium, and fell below 20% in period 3. Almost all other players were makers; Out shares were always miniscule. The share of traders choosing speed trended up in CDA as predicted, reaching almost ⅔ in period 3, and trended down (also consistent with prediction) in FBA, falling to 11% in period 3. -->
+
+<!--(In our pilot experiment, the ratio is 0.5/5 = 0.10; in more realistic settings it might be closer to 0.01.)-->
     
 
 --------------------------------------------------------
