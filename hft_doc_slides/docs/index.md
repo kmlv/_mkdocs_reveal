@@ -221,7 +221,7 @@ A market maker chooses a spread  around the fundamental V ; by choosing s she au
     
     * When $ V(t) $ jumps, the maker sends a replace order, and everyone else tries to buy (sell) the stale quote and liquidate at new fundamental ("snipe").
     
-    * Sniping probability $ \frac{N-1}{N} $
+    * Sniping probability $ \frac{N-1}{N} $.
     
     * Sniping generates arbitrage rents paid by investors.
 
