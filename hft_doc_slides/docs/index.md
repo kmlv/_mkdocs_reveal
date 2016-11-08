@@ -71,7 +71,7 @@ University of California, Santa Cruz
 
 --------------------------------------------------------
 
-##  Research Design: General 
+##  Research Design
 
 * We use the experimental method to study and compare relevant market formats.
 
@@ -85,7 +85,7 @@ University of California, Santa Cruz
 
 --------------------------------------------------------
 
-##  Research Design: Market formats - CDA
+##  Market formats - CDA
 
 * Baseline market format: the Continuous Double Auction (CDA) 
 
@@ -99,7 +99,7 @@ University of California, Santa Cruz
 
 --------------------------------------------------------
 
-##  Research Design: Market formats - Alternatives
+##  Market formats - Alternatives
      
 * Three alternative formats (all attempt to keep the pros of CDA and to alter the incentives for speed).
    
@@ -113,7 +113,7 @@ University of California, Santa Cruz
     
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-##  Research Design: Project Stages 
+##  Project Stages 
 
 This project has two phases:
 
@@ -214,13 +214,13 @@ A market maker chooses a spread  around the fundamental V ; by choosing s she au
 
 ---------------------------------------------------------
 
-## Equilibrium of CDA in the BCS Model 
+## Equilibrium of CDA in the BCS Model (main feature)
  
-* No asymmetric info, no inventory costs, everyone risk neutral. Yet, Bertrand competition (zero bid-ask spread) does not happen. 
-  
+* No asymmetric info, no inventory costs, everyone risk neutral. Yet, Bertrand competition does not happen: Eqm spread > 0. 
+ 
 * This is due to sniping incentives:
     
-    * When V jumps, the maker sends a replace order, and everyone else tries to buy (sell) the stale quote and liquidate at new fundamental ("snipe").
+    * When $ V(t) $ jumps, the maker sends a replace order, and everyone else tries to buy (sell) the stale quote and liquidate at new fundamental ("snipe").
     
     * Sniping probability $ \frac{N-1}{N} $
     
@@ -282,7 +282,7 @@ If demand and supply do intersect, then the market clears where supply equals de
 
 * Snipers' orders automatically cancelled if not filled.
 
-* Sniping profitable only when being _fast_ & there is a _slow_ maker & a jump occurs after $ T - \delta_{slow} $ and before $ T - \delta_{fast} $
+* Sniping profitable only when being _fast_ & there is a _slow_ maker & a jump occurs after $ T - \delta_{slow} $ and before $ T - \delta_{fast} $.
  
  <!---->
  <!--Note that such a snipe can be profitable only when (a) the sniper has purchased speed and at least one maker has not and (b) there is a sufficiently large jump in V within the last τ seconds of the batching period. The last condition suggests that sniping is less profitable in FBA than in CDA to the extent that τ is smaller than the batching interval.--> 
@@ -306,7 +306,7 @@ $$ \frac{\Delta\delta .\lambda_V}{\tau}.\mathbb{E}(J).\bar{Q} < c_{speed}  $$
 
 --------------------------------------------------------
 
-# Lab Implementation
+# Laboratory Implementation
 
 --------------------------------------------------------
 
@@ -332,7 +332,7 @@ $$ \frac{\Delta\delta .\lambda_V}{\tau}.\mathbb{E}(J).\bar{Q} < c_{speed}  $$
 
 <!--![CDA experimental interface](img/CDA.png)-->
 
-<img src="img/CDA.png" style="width:500px; align-content: center">
+<img src="img/CDA.png" style="width:700px; align-content: center">
 
 <!--Eric, the options for resizing in reveal.js depend on the available extensions and markdown "version" [ideas?]-->
 
@@ -347,7 +347,7 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 ## Laboratory Implementation: FBA 
 
-<img src="img/FBA.png" style="width:500px; align-content: center">
+<img src="img/FBA.png" style="width:700px; align-content: center">
 
 <!--![FBA Interface](img/FBA.png)-->
 
@@ -367,7 +367,7 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 * Exogenous processes: 
     
-    * Stochastic realizations using $λ_V=4$, $λ_I= 3$, $F_V = N(0,0.5)$, $c_s=\\$0.01/sec$ and $ τ = 0.5 sec $, and $V_0 = 100$.
+    * Stochastic realizations using $λ_V=4$, $λ_I= 3$, $F_V = N(0,0.5)$, $c_s=\\$0.01/s$ and $ \delta_{slow} = 0.5s $, and $V_0 = 100$.
     
     * Realizations matched across groups and formats.
 
@@ -384,9 +384,9 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 ## Pilot Experiment: Setting   
 
-* Pilot experiment with a Redwood II prototype of CDA and FBA engines
+* Redwood II interface
 
-* Two market format:
+* Two market formats: CDA and FBA 
 
     * Three trading days (periods), five-minutes each.
 
