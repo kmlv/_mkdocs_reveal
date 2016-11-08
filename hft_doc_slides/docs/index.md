@@ -158,7 +158,7 @@ The second phase will consist of public tournaments hosted on a specially design
 * $ V(t) $ evolves via compound Poisson with jump rate $ \lambda_V $ and jump distribution $ F_V $ 
 <!--  Finite support; Symmetric with mean zero-->
 
-* $ J $ distribution of the jump size.  
+* $ J $ is distribution of the jump size.  
 <!--abs value of F_v realizations-->
 
 ---------------------------------------------------------
