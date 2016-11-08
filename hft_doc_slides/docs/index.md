@@ -320,7 +320,7 @@ $$ \frac{\Delta\delta .\lambda_V}{\tau}.\mathbb{E}(J).\bar{Q} < c_{speed}  $$
  
 * Automated investors: exogenous stream of market buy/sell orders, Poisson arrival rates $λ_I$.
 
-* Trader control bots/algorithms which place orders on their behalf, conditional on market conditions and strategies ({out, making/spread, sniping}, {fast, slow})
+* Traders control bots/algorithms which place orders on their behalf, conditional on market conditions and strategies ({out, making/spread, sniping}, {fast, slow})
  
 
 <!-- The simplest lab environment is adapted from BCS. A single asset is traded on a single exchange, and price is a continuous variable. The fundamental value V(t) is determined exogenously by a compound Poisson process with arrival rate λ_V and jump distribution F_V. Players’ profit opportunities come from “investors” represented by an exogenous stream of unit market orders to buy (limit price very high) and to sell (limit price 0) with Poisson arrival rates λ_B=λ_S=λ_I.-->
