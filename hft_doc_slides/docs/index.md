@@ -487,7 +487,7 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 * Evidence from the laboratory and tournaments will provide knowledge to improve the design of financial markets.
 
-* Research infrastructure will be an contribution for future research. 
+* Research infrastructure will be a contribution for future research. 
 
 <!--Exploring these differing environments will contribute to fundamental knowledge regarding financial market design. By introducing features one at a time, we will make strong inferences about which environmental aspects shape observed outcomes. By holding constant the realized stochastic process across market formats in any given environment, we can draw causal conclusions regarding comparative performance. For example, we will be able to make clear statements such as “relative to the basic CDA baseline, the IEX format lowers trading cost by 5-8% in normal environment X, but increases value-at-risk by 20-30% in stressful environment Y.” Such statements should help focus conventional econometric analysis of market data, and even by themselves should be helpful for regulators and exchange officials. -->
 
@@ -499,7 +499,9 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 * Center for Analytical Finance.
 
-* ...
+* Undergraduate programmers, Morgan Grant and Zach Petersen.
+
+* University of Maryland postdocs, Darrell Hoy and David Malec.
 
 
 <!--
