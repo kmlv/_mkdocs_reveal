@@ -398,7 +398,7 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 ## Pilot Experiment: Results
 
-* Almost all players were trading, _Out_ shares were always minuscule.
+* Almost all players were trading, _Out_ shares were always very small.
 
 * The share of traders as snipers:
     * Weak uptrend in CDA; never exceeded 43% (eqm share = 75%). 
