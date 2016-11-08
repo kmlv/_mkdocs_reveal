@@ -89,7 +89,7 @@ University of California, Santa Cruz
 
 * Baseline market format: the Continuous Double Auction (CDA) 
 
-    * Organizes trade in near all major exchanges.
+    * Organizes trade in nearly all major exchanges.
      
     * Orders are processed immediately with strict price-time priority 
  
