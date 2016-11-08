@@ -101,7 +101,7 @@ University of California, Santa Cruz
 
 ##  Market formats - Alternatives
      
-* Three alternative formats attempt reduce the incentives for speed.
+* Three alternative formats attempt to reduce the incentives for speed.
    
     1. IEX: delays incoming orders by 350 $\mu$S, allows hidden, “pegged” orders;
     
