@@ -425,62 +425,20 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 <!--The relevant performance metrics here are for transactions cost and informational efficiency; long-run stability issues are less relevant in this simple stylized environment.  Mean spread in FBA period 3 was only 0.22% vs 0.41% in CDA, both in the neighborhood of the predicted 0% and 0.32%, respectively; and overall mean spreads were only about 0.10% higher. FBA was also more informationally efficient: in every period, both CDA markets had higher RMSE than either FBA market; the period 3 averages were about 0.42% in CDA and 0.32% in FBA. -->
 
-
----------------------------------------------------
-
-## Detailed Results: Fraction of Time Spent in Each Role
-
-| | CDA | | | FBA | | |
-| --- | --- | --- | --- | --- | --- | --- |
-| | OUT | MAKER | SNIPE | OUT | MAKER | SNIPE |
-| P1G1 | 0.0439 | 0.648 | 0.308 | 0.00711 | 0.672 | 0.32 |
-| P1G2 | 0.0111 | 0.622 | 0.367 | 0.0169 | 0.666 | 0.317 |
-| P2G1 | 0.0141 | 0.675 | 0.311 | 0.00549 | 0.744 | 0.25 |
-| P2G2 | 0.033 | 0.569 | 0.398 | 0.00954 | 0.74 | 0.25 |
-| P3G1 | 0.0301 | 0.545 | 0.425 | 0.00559 | 0.764 | 0.231 |
-| P3G2 | 0.00607 | 0.654 | 0.34 | 0.00842 | 0.834 | 0.157 |
-
---------------
-
-## Detailed Results: Fraction of Time Spent in Each Speed Category
-
-| | CDA | | FBA | |
-| --- | --- | --- | --- | --- |
-| | Slow | Fast | Slow | Fast |
-| P1G1 | 0.724 | 0.276 | 0.731 | 0.269 |
-| P1G2 | 0.413 | 0.587 | 0.699 | 0.301 |
-| P2G1 | 0.487 | 0.513 | 0.639 | 0.361 |
-| P2G2 | 0.443 | 0.557 | 0.915 | 0.0854 |
-| P3G1 | 0.403 | 0.597 | 0.846 | 0.154 |
-| P3G2 | 0.278 | 0.722 | 0.933 | 0.0671 |
-
 ----------------------------------------------------
 
-## Detailed Results: Average Inside Spread
+## Summary Results 
 
-| | CDA | FBA |
-| --- | --- | --- |
-| | MeanSpread | MeanSpread |
-| P1G1 | 0.968 | 0.361 |
-| P1G2 | 0.625 | 0.518 |
-| P2G1 | 0.475 | 0.358 |
-| P2G2 | 0.435 | 0.149 |
-| P3G1 | 0.422 | 0.312 |
-| P3G2 | 0.372 | 0.113 |
-
-----------------------------------------------------
-
-## Detailed Results: Trade Statistics
-
-| | CDA | | FBA | |
-| --- |: --- :| --- | : --- : | --- |
-|      | *NumTrades* | *RMSE* | *NumTrades* | *RMSE* |
-| P1G1 | 104 | 0.00555 | 89 | 0.00376 |
-| P1G2 | 115 | 0.00441 | 86 | 0.00457 |
-| P2G1 | 141 | 0.00347 | 88 | 0.00297 |
-| P2G2 | 140 | 0.00386 | 82 | 0.00218 |
-| P3G1 | 159 | 0.00382 | 98 | 0.00323 |
-| P3G2 | 157 | 0.00388 | 84 | 0.0027  |
+| | MAKER | SNIPE | Speed | Mean Spread | NumTrades | RMSE |
+| --- | :---: | :---: | :---: | :---: | :---: | :---: |
+| **CDA** | | | | | | |
+|1st Period | 63.5% | 33.8% | 43.2% | 0.80 | 109.5 | 0.50% |
+|2nd Period | 62.2% | 35.5% | 53.5% | 0.46 | 140.5 | 0.37% |
+|3rd Period | 60.0% | 38.3% | 66.0% | 0.40 | 158.0 | 0.39% |
+| **FBA** | | | | | | |
+|1st Period | 66.9% | 31.9% | 28.5% | 0.44 | 87.5 | 0.42% |
+|2nd Period | 74.2% | 25.0% | 22.3% | 0.25 | 85.0 | 0.26% |
+|3rd Period | 79.9% | 19.4% | 11.1% | 0.21 | 91.0 | 0.30% |
 
 --------------------------------------------------------
 
@@ -538,11 +496,11 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 --------------------------------------------------
 
-##  Thanks to 
+##  Thanks to: 
 
 * Center for Analytical Finance.
 
-* _
+* ...
 
 
 <!--
@@ -569,6 +527,3 @@ DRAFT ZONE
 If one of the snipers is first, then he makes (and the market maker loses) 0.5s. -->
       
 
-
-
--->
