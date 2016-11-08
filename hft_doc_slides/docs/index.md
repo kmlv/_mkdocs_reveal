@@ -215,7 +215,7 @@ A market maker chooses a spread  around the fundamental V ; by choosing s she au
 
 ## Equilibrium of CDA in the BCS Model (main feature)
  
-* No asymmetric info, no inventory costs, everyone risk neutral. Bertrand competition, but Eqm spread > 0. 
+* No asymmetric info, no inventory costs, everyone risk neutral. Bertrand competition, but equilibrium spread > 0. 
  
 * This is due to sniping incentives:
     
