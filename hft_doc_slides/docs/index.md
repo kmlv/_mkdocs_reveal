@@ -174,7 +174,7 @@ The second phase will consist of public tournaments hosted on a specially design
 
 * Investors (exogenous liquidity/noise traders):
     * Arrive randomly with fixed need to buy/sell 1 unit at a Poisson
-    * arrival rate of $\smash{\lambda_I}$.
+      arrival rate of $\smash{\lambda_I}$.
     * Trade immediately upon arrival: they are only takers of liquidity. 
 
 ---------------------------------------------------------
