@@ -57,7 +57,9 @@ University of California, Santa Cruz
 
 ## Motivation  
 
-* Existing data are insufficient to resolve the controversy (gathered from a single format -- CDA).
+* Existing data are insufficient to resolve the controversy.
+
+    * Gathered from a single format -- CDA.
 
 * Policy makers and regulators worldwide are already implementing HFT-focused policies. 
 
@@ -75,9 +77,15 @@ University of California, Santa Cruz
 
 * We use experiments to compare relevant market formats.
 
-* **Examine 4 formats**: Continuous Double Auction (CDA - widely used worldwide); three market alternatives (FBA, IEX, EBS). 
+* **Examine 4 formats**:
 
-* **Two stages**: Laboratory (ongoing) and Field (open tournament - early stage).
+    * Continuous Double Auction (CDA).
+    * Three alternatives -- FBA, IEX, EBS. 
+
+* **Two stages**:
+
+    * Laboratory (ongoing).
+    * Field (open tournament - early stage).
  
 * **Outcomes and metrics of performance**: liquidity, stability, and transactions costs.
  
@@ -85,27 +93,27 @@ University of California, Santa Cruz
 
 --------------------------------------------------------
 
-##  Market formats - CDA
+##  Market formats
 
-* Baseline market format: the Continuous Double Auction (CDA) 
+* Baseline market format: Continuous Double Auction (CDA) 
 
     * Organizes trade in nearly all major exchanges.
      
-    * Orders are processed immediately with strict price-time priority 
+    * Orders processed immediately with price-time priority.
  
-    * => speed technology is crucial.
+    * Speed technology is crucial.
     
 <!--The baseline market format is the Continuous Double Auction (CDA) which organizes trade in near all major exchanges around the world. Since under CDA trading occurs at any moment and orders are processed with price-time priority, speed technology is crucial.-->
 
 --------------------------------------------------------
 
-##  Market formats - Alternatives
+##  Market formats
      
 * Three alternative formats attempt to reduce the incentives for speed.
    
-    1. IEX: delays incoming orders by 350 $\mu$S, allows hidden, “pegged” orders;
+    1. IEX: delays incoming orders by 350 $\smash{\mu}$s, allows hidden, “pegged” orders.
     
-    2. EBS: within a narrow time window, randomizes the sequence in which orders are processed;
+    2. EBS: within a narrow time window, randomizes the sequence in which orders are processed.
      
     3. Frequent batch auction (FBA): equal priority to orders received in the same batch (e.g. a tenth of a second).
     
@@ -114,8 +122,6 @@ University of California, Santa Cruz
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ##  Project Stages 
-
-This project has two phases:
 
 1. Laboratory experiments:
     * Simple environments, adding relevant features of modern exchanges one at a time. 
@@ -133,11 +139,11 @@ The second phase will consist of public tournaments hosted on a specially design
 
 ##  Project Status 
 
-1. Developed simple laboratory environments
-    * Based on Budish, Cramton and Shim (2015); BCS hereafter.
+1. Developed simple laboratory environments.
+    * Based on Budish, Cramton and Shim (2015) - BCS hereafter.
     * CDA and FBA
 
-2. Conducted pilot experiments; very preliminary results.
+2. Conducted pilot experiments - very preliminary results.
     
 3. Currently developing financial exchange.
 
@@ -147,39 +153,46 @@ The second phase will consist of public tournaments hosted on a specially design
 
 ---------------------------------------------------------
 
-## Model Primitives: Asset, Information
+## Model Primitives
 
-* One security $ x $, indivisible single units traded in continuous time.
+* One security $\smash{x}$, indivisible single units traded in continuous time.
 
-* $ x $ can be costlessly liquidated at publicly observed fundamental value $ V(t) $. 
+* $\smash{x}$ can be costlessly liquidated at publicly observed fundamental value $\smash{V(t)}$. 
  
- <!--no asymmetric information, costs of inventory, etc "best case scenario for price discovery"-->
-
-* $ V(t) $ evolves via compound Poisson with jump rate $ \lambda_V $ and jump distribution $ F_V $ 
+* $\smash{V(t)}$ evolves via compound Poisson with jump rate
+  $\smash{\lambda_V}$ and jump distribution $\smash{F_V}$  
 <!--  Finite support; Symmetric with mean zero-->
 
-* $ J $ is distribution of the jump size.  
+* $\smash{J}$ is distribution of the jump size.  
 <!--abs value of F_v realizations-->
 
 ---------------------------------------------------------
 
-## Model Primitives: Investors and Trading Firms
+## Model Primitives
 
 <!--end users of financial markets: mutual funds, pension funds, hedge funds, etc. -->
 
 * Investors (exogenous liquidity/noise traders):
-    * Arrive randomly with fixed need to buy/sell 1 unit at a Poisson arrival rate of $ λ_I $. 
+    * Arrive randomly with fixed need to buy/sell 1 unit at a Poisson
+    * arrival rate of $\smash{\lambda_I}$.
     * Trade immediately upon arrival: they are only takers of liquidity. 
 
+---------------------------------------------------------
+
+## Model Primitives
+
 * Trading Firms (HFTs, algorithmic traders, makers):
-    * No intrinsic demand: profit/lose from trading at prices $ p \neq V(t) $.
+    * No intrinsic demand: profit/lose from trading at prices $\smash{p \neq V(t)}$.
     * Entry is endogenous.
     
-* Latency: firms observe V with a small delay, $ \delta_{slow} > 0 $. At a cost $ c_{speed} $, they can reduce latency by $ \Delta\delta = \delta_{slow} - \delta_{fast} > 0 $ Wolog $\delta_{fast} = 0 $. 
+* Latency:
+    * Firms observe $\smash{V}$ with a small delay, $\smash{\delta_{slow} > 0}$.
+    * They can reduce latency by $\smash{\Delta \delta = \delta_{slow} - \delta_{fast} > 0}$ at a cost $\smash{c_{speed}}$.
+    * Wolog $\smash{\delta_{fast} = 0}$.
 
 --------------------------------------------------------
 
-## Continuous Double Auction - CDA 
+## CDA in General
 
 * Limit order: Buy(sell) 100 shares of APL at $100.00 or less (or more).
  
@@ -193,19 +206,21 @@ The second phase will consist of public tournaments hosted on a specially design
 
 --------------------------------------------------------
 
-## CDA in the BCS Model
+## CDA in BCS
  
-* Strategies for trading firms (at any moment of trading day):
+* Strategies for trading firms (at all times):
 
     1. _Exit_ the market.
     
-    2. _Market maker_: chooses spread $[0, \bar{S}]$ (centered on $V$) and speed technology _{fast, slow}_.
+    2. _Market maker_: chooses spread $\smash{[0, \bar{S}]}$ (centered
+    on $\smash{V}$) and speed technology _{fast, slow}_.
         * Profits upon investor arrivals.
     
     3. _Sniper_: chooses speed technology _{fast, slow}_
-        * Profits from value jumps and stale orders (see below). 
+        * Profits from value jumps and stale orders.
 
-* Speed technology reduces latency at a cost of $c_{speed}$ per unit of time. 
+* Speed technology reduces latency at a cost of $\smash{c_{speed}}$
+  per unit of time.
 
 <!--Players at any instant choose whether (a) to exit the market and earn a modest flow of income w (= 0 in our implementation), or to participate either as (b) a market maker or (c) a sniper. In the latter two cases players also choose whether to invest in a technology that reduces latency at cost cs per unit of time. 
 A market maker chooses a spread  around the fundamental V ; by choosing s she automatically posts a bid at V - 0.5s and an ask at V + 0.5s. In the CDA she makes profit of 0.5s any time she has the smallest spread when an exogenous market order arrives. Her limit orders automatically track V with some fixed latency ; during that latency, the orders are stale in that they do not reflect the current fundamental value. By paying the cost of speed cs the market maker can reduce the latency to (without loss of generality for our purposes) zero. 
@@ -213,55 +228,65 @@ A market maker chooses a spread  around the fundamental V ; by choosing s she au
 
 ---------------------------------------------------------
 
-## Equilibrium of CDA in the BCS Model (main feature)
+## BCS Equilibrium (CDA)
  
-* No asymmetric info, no inventory costs, everyone risk neutral. Bertrand competition, but equilibrium spread > 0. 
+* No asym. info or inventory costs, everyone risk neutral.
+
+* Bertrand competition, but equilibrium spread > 0. 
  
-* This is due to sniping incentives:
+* Positive spread is related to jumps in $\smash{V(t)}$:
     
-    * When $ V(t) $ jumps, the maker sends a replace order, and everyone else tries to buy (sell) the stale quote and liquidate at new fundamental ("snipe").
+    * Maker sends a replace order.
+
+    * Others try to buy (sell) at stale quote and liquidate at new
+      fundamental ("snipe").
     
-    * Sniping probability $ \frac{N-1}{N} $.
+    * Sniping probability $\smash{\frac{N-1}{N}}$.
     
     * Sniping generates arbitrage rents paid by investors.
 
 ---------------------------------------------------------
 
-## Equilibrium of CDA in the BCS Model (complete)
+## BCS Equilibrium (CDA)
 
-* Unique Nash Equilibrium (s\*, N\*).
+* Unique Nash Equilibrium $\smash{(s^*, N^*)}$.
 
 * Investors trade immediately upon arrival.
  
-* One trading firm is market maker: sets spread $ s^{*} $, orders tracking V(t).
+* One firm is market maker: spread $\smash{s^{*}}$, orders
+  tracking $\smash{V(t)}$.
  
-* N − 1 trading firms are stale-quote snipers: submit IOC orders when V(t) jumps.
+* $\smash{N − 1}$ trading firms are stale-quote snipers: submit IOC
+  orders when $\smash{V(t)}$ jumps.
   
-* Zero profit for market makers: 
-$$ λ_I . \frac{s}{2} - λ_V.\Pr(J>\frac{s}{2}).\mathbb{E}( J-\frac{s}{2}|J>\frac{s}{2} ). \frac{N-1}{N} = c_{speed} $$
+---------------------------------------------------------
+
+## BCS Equilibrium (CDA)
+
+* Zero profit for market makers: $$λ_I . \frac{s}{2} - λ_V.\Pr(J>\frac{s}{2}).\mathbb{E}( J-\frac{s}{2}|J>\frac{s}{2} ). \frac{N-1}{N} = c_{speed}$$
 
 * Zero profit for snipers: 
-$$ λ_V.\Pr(J>\frac{s}{2}).\mathbb{E}( J-\frac{s}{2}|J>\frac{s}{2} ). \frac{1}{N} = c_{speed} $$
+$$λ_V.\Pr(J>\frac{s}{2}).\mathbb{E}( J-\frac{s}{2}|J>\frac{s}{2} ). \frac{1}{N} = c_{speed}$$
 
 <!--
     Simplifies to lambda_I s*/2 = N* c_speed:     
     "all of the expenditure by trading  rms on speed technology ultimately is borne by investors, via the bid-ask spread."..."Arms-race prize = expenditures on speed = cost to investors"
   
     * Equilibrium Condition Exo Entry: Revenue from investors = rents to trading firms. 
-    $$ λ_I . \frac{s}{2} = λ_V.\Pr\[J>\frac{s}{2}\].\mathbb{E}( J-\frac{s}{2}|J>\frac{s}{2} ) $$
+    $$\smash{λ_I . \frac{s}{2} = λ_V.\Pr\[J>\frac{s}{2}\].\mathbb{E}( J-\frac{s}{2}|J>\frac{s}{2} )}$$
 -->
 
 ---------------------------------------------------------
 
-## Frequent Batch Auction - FBA 
+## FBA in General
 
 * Orders are (still) continuously time-stamped.
 
-* Trading day divided into many equal-length _submission stages_ (of length $ \tau $).
+* Trading day divided into many equal-length _submission stages_ (of length $\smash{\tau}$).
  
 * At closing, all standing buy (sell) orders are combined to generate a stair-step demand (supply) curve.
 
-* Market clearing (equilibrium) price $ p^\star $ is computed, and infra-marginal bids and asks are executed at a uniform price $ p^\star $.
+* Market clearing (equilibrium) price $\smash{p^\star}$ is computed, and infra-marginal bids and asks are executed at a uniform price $\smash{p^\star}$.
 
 <!--![Timing in FBA](img/timing_FBA.png)-->
 <!--<img src="img/timing_FBA.png" style="width:500px; align-content: center">-->
@@ -273,15 +298,15 @@ If demand and supply do intersect, then the market clears where supply equals de
 
 --------------------------------------------------------
 
-## FBA in the BCS Model
+## FBA in BCS
 
-* As in CDA, a maker submits one sell (buy) limit order that tracks the fundamental + (-) a chosen spread $ s $.  
+* As in CDA, a maker submits one sell (buy) limit order that tracks the fundamental + (-) a chosen spread $\smash{s}$.  
 
-* A sniper's bot submits a limit buy (sell) at the newest $V(t)$ each _interval_ with a V-jump. 
+* A sniper's bot submits a limit buy (sell) at the newest $\smash{V(t)}$ each _interval_ with a $\smash{V}$-jump. 
 
 * Snipers' orders automatically cancelled if not filled.
 
-* Sniping profitable only when being _fast_ & there is a _slow_ maker & a jump occurs after $ T - \delta_{slow} $ and before $ T - \delta_{fast} $.
+* Sniping profitable only when _fast_ and there is a _slow_ maker and a jump occurs in $\smash{(T - \delta_{slow},T - \delta_{fast})}$.
  
  <!---->
  <!--Note that such a snipe can be profitable only when (a) the sniper has purchased speed and at least one maker has not and (b) there is a sufficiently large jump in V within the last τ seconds of the batching period. The last condition suggests that sniping is less profitable in FBA than in CDA to the extent that τ is smaller than the batching interval.--> 
@@ -289,16 +314,16 @@ If demand and supply do intersect, then the market clears where supply equals de
 
 --------------------------------------------------------
 
-## Equilibrium of FBA in the BCS Model
+## BCS Equilibrium (FBA)
  
 * Bertrand competition: Zero bid-ask spread.
-    * For any $ \tau $ (batching length) > 0 (discont. between continuous/serial & discrete/batch).
+    * $\smash{\forall \tau > 0}$ (discontinuity between CDA/FBA).
 
-* (Slow) trading firms supply $ \bar{Q} $ units of liquidity at zero spread.
+* (Slow) firms supply $\smash{\bar{Q}}$ units of liquidity at zero spread.
 
-* If $ \tau $ sufficiently larger than speed differential $ \Delta δ $ => no one invests in speed:
+* $\smash{\tau >> \Delta \delta \Rightarrow}$ no one invests in speed:
 
-$$ \frac{\Delta\delta .\lambda_V}{\tau}.\mathbb{E}(J).\bar{Q} < c_{speed}  $$
+$$\smash{\frac{\Delta\delta \, \lambda_V}{\tau} \, \mathbb{E}(J) \, \bar{Q} < c_{speed} }$$
 
 <!--The fraction Deltaδ*λjump/tau  is the proportion of time which the fast trader has a profitable sniping opportunity. For finite Q, the condition is satisfied for long enough τ.-->
 
@@ -309,25 +334,25 @@ $$ \frac{\Delta\delta .\lambda_V}{\tau}.\mathbb{E}(J).\bar{Q} < c_{speed}  $$
 
 --------------------------------------------------------
 
-## Basic Lab Environment
+## Lab Environment
 <!--This is a summary slide, the next four are the detail-->
 
 * Simplest lab environment is adapted from BCS.
  
-* A single asset, single exchange, price is continuous.
+* Single asset, single exchange, continuous price.
 
-* The fundamental value $V(t)$: exogenous, compound Poisson process, jump rate $ λ_V $, jump distribution $F_V$.
+* $\smash{V(t)}$: exogenous, compound Poisson process, jump rate $\smash{λ_V}$, jump distribution $\smash{F_V}$.
  
-* Automated investors: exogenous stream of market buy/sell orders, Poisson arrival rates $λ_I$.
+* Automated investors: exogenous stream of market buy/sell orders, Poisson arrival rates $\smash{\lambda_I}$.
 
-* Traders control bots/algorithms which place orders on their behalf, conditional on market conditions and strategies ({out, making/spread, sniping}, {fast, slow})
+* Traders control bots/algorithms which place orders on their behalf, conditional on market conditions and strategies (_{out, making, sniping}_, _{fast, slow}_).
  
 
 <!-- The simplest lab environment is adapted from BCS. A single asset is traded on a single exchange, and price is a continuous variable. The fundamental value V(t) is determined exogenously by a compound Poisson process with arrival rate λ_V and jump distribution F_V. Players’ profit opportunities come from “investors” represented by an exogenous stream of unit market orders to buy (limit price very high) and to sell (limit price 0) with Poisson arrival rates λ_B=λ_S=λ_I.-->
 
 --------------------------------------------------------
 
-## Laboratory Implementation: CDA
+## CDA in the Lab
 
 <!--![CDA experimental interface](img/CDA.png)-->
 
@@ -344,7 +369,7 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 --------------------------------------------------------
 
-## Laboratory Implementation: FBA 
+## FBA in the Lab
 
 <img src="img/FBA.png" style="width:700px; align-content: center">
 
@@ -363,7 +388,7 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 --------------------------------------------------------
 
 
-## Pilot Experiment: Setting   
+## Setting   
 
 * Redwood II interface
 
@@ -377,25 +402,28 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 --------------------------------------------------------
 
-## Pilot Experiment: Design    
+## Design    
 
-* Exogenous processes: 
+* $\smash{\lambda_V=4}$: $\smash{V(t)}$ jumps every 4 seconds.
+    * Historical SPY ETF data $\smash{\Rightarrow}$ 5-min lab session corresponds to 1.5 min of market trading.
+        
+* $\smash{\lambda_I= 3}$: Investor arrivals every 3 seconds.
+        
+* $\smash{V_0 = 100}$: Order of magnitude equal to liquid equities.
+        
+* $\smash{F_V = N(0,0.5)}$: Standard deviation is relatively large to price increments in data, but the magnitude is arbitrary if subjects can scale spreads accordingly.
+        
+--------------------------------------------------------
+
+## Design    
+
+* $\smash{c_s= \$0.01/s}$: Roughly twice the cost (per symbol, per second of a trading day) for a premier microwave service.
+        
+*  $\smash{\delta_{slow} = 0.5s}$: About 10 times larger than actual
+   Chicago $\smash{\rightarrow}$ NY latency, after accounting for our
+   time scaling.
     
-    * Stochastic realizations using
-    
-        - $λ_V=4$: Fundamental value jumps once every 4 seconds. Using historical data on the SPY ETF, this means a 5-minute lab session corresponds to about 1.5 minutes of actual market trading.
-        
-        - $λ_I= 3$: Investor arrivals once every 3 seconds.
-        
-        - $V_0 = 100$: Order of magnitude equal to most liquid equities.
-        
-        - $F_V = N(0,0.5)$: Standard deviation is relatively large to price increments in data, but the magnitude is arbitrary if subjects can scale spreads accordingly.
-        
-        - $c_s=\\$0.01/s$: Roughly twice the cost (per symbol, per second of a trading day) for a premier microwave service.
-        
-        - $ \delta_{slow} = 0.5s $: About 10 times larger than actual Chicago -> NY latency, after accounting for our time scaling.
-    
-    * Realizations matched across groups and formats.
+* Realizations matched across groups and formats.
 
 * In FBA, batch interval was 5 secs (1.25 secs, market time); reporting lag was essentially zero; default latency / interval = 0.1.
 
@@ -408,29 +436,32 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 --------------------------------------------------------
 
-## Pilot Experiment: Results
+## Results
 
-* Almost all players were trading, _Out_ shares were always very small.
+* Very few subjects played _Out_.
 
-* The share of traders as snipers:
-    * Weak uptrend in CDA; never exceeded 43% (eqm share = 75%). 
-    * Trended down in FBA, below 20% in period 3 (eqm share = 0)
+* Share of traders as snipers:
+    * Weak uptrend in CDA - never exceeded 43%.
+        * Equilibrium share = 75%. 
+    * Trended down in FBA - below 20% in period 3.
+        * Equilibrium share = 0.
       
 * The share of traders choosing speed:
-    * trended up in CDA (as predicted) reaching ~⅔ in period 3, 
-    * trended down (as predicted) in FBA, falling to 11% in period 3. 
+    * Trended $\smash{\uparrow}$ in CDA (predicted) reaching ~⅔ in period 3.
+    * Trended $\smash{\downarrow}$ in FBA (predicted) falling to 11% in period 3. 
 
 --------------------------------------------------------
 
-## Pilot Experiment: Results
+## Results
 
-* Performance metrics: transactions cost and informational efficiency.
-    * Observed mean spread in period 3: FBA: 0.22%; CDA: 0.41%.
-    * Predicted mean spread 0% and 0.32%, respectively; 
+* Performance metrics:
+    * Transactions cost: observed mean spread.
+        * Period 3: FBA = 0.22% and  CDA = 0.41%.
+        * Predicted mean spread: FBA = 0% and CDA = 0.32%.
 
-* FBA was also more informationally efficient: 
-    * CDA markets had higher RMSE than FBA market
-    * In period 3, CDA: 0.42% and FBA: 0.32%. 
+    * Information efficiency: RMSE.
+        * CDA markets had higher RMSE than FBA market
+        * Period 3: FBA = 0.32% and CDA = 0.42%.
 
 <!--We found a weak uptrend for snipers in CDA, but the share never exceeded 43%; in equilibrium of the BCS model the sniper share is 75%. In FBA the sniper share trended down, as predicted in BCS equilibrium, and fell below 20% in period 3. Almost all other players were makers; Out shares were always miniscule. The share of traders choosing speed trended up in CDA as predicted, reaching almost ⅔ in period 3, and trended down (also consistent with prediction) in FBA, falling to 11% in period 3. -->
 
@@ -457,13 +488,16 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 --------------------------------------------------------
 
-## Production Experiments: 
+## Production
 
 * Results are interesting but far from conclusive.
  
-* We will run production sessions with these and other parameter configurations, (e.g. stressful periods), and robustness checks (e.g. not showing other traders’ speed status or spread) etc.
+* We will run production sessions:
+    * With current parameters.
+    * With other parameters (e.g. stressful periods)
+    * With robustness checks (e.g. not showing other traders’ speed status or spread).
  
-* More importantly, we are implementing IEX and EBS variants of the CDA.
+* We are implementing IEX and EBS variants of the CDA.
  
 * We need feedback!
 
@@ -471,7 +505,7 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 --------------------------------------------------------
 
-## More Realistic Environments 
+## More Realism
 
 1. Variable and asymmetric arrival intensities and jump distributions. 
 
@@ -495,11 +529,14 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 --------------------------------------------------
 
-##  Discussion:
+##  Discussion
 
-* Evidence from the laboratory and tournaments will provide knowledge to improve the design of financial markets.
+* Evidence from the lab and tournaments will improve understanding of
+  financial market design.
 
-* Research infrastructure will be a contribution for future research. 
+    * Of interest to regulators and policy makers.
+
+* Our infrastructure will be a contribution for future research. 
 
 <!--Exploring these differing environments will contribute to fundamental knowledge regarding financial market design. By introducing features one at a time, we will make strong inferences about which environmental aspects shape observed outcomes. By holding constant the realized stochastic process across market formats in any given environment, we can draw causal conclusions regarding comparative performance. For example, we will be able to make clear statements such as “relative to the basic CDA baseline, the IEX format lowers trading cost by 5-8% in normal environment X, but increases value-at-risk by 20-30% in stressful environment Y.” Such statements should help focus conventional econometric analysis of market data, and even by themselves should be helpful for regulators and exchange officials. -->
 
@@ -507,7 +544,7 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 --------------------------------------------------
 
-##  Thanks to: 
+##  Thanks to
 
 * Center for Analytical Finance.
 
@@ -530,13 +567,13 @@ DRAFT ZONE
 
 * A _maker_ profits when an investor arrives and executes against her buy/sell order.
 
-* A _sniper_ profits only when $V(t)$ jumps and there are stale orders in the book.
+* A _sniper_ profits only when $\smash{V(t)}$ jumps and there are stale orders in the book.
 
-* A _Maker_ loses when her stale offers get executed upon a $V(t)$ jump (gets sniped) 
+* A _Maker_ loses when her stale offers get executed upon a $\smash{V(t)}$ jump (gets sniped) 
 
-* All _fast_ (low latency) players have equal chance of being first to respond to any change in $V(t)$. 
+* All _fast_ (low latency) players have equal chance of being first to respond to any change in $\smash{V(t)}$. 
 
-<!-- sniping gains/loses are conditional to $\Delta V(t)$ exceeding the (smallest) 0.5s set by a market maker. 
+<!-- sniping gains/loses are conditional to $\smash{\Delta V(t)}$ exceeding the (smallest) 0.5s set by a market maker. 
 If one of the snipers is first, then he makes (and the market maker loses) 0.5s. -->
       
 
