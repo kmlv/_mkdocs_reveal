@@ -9,11 +9,6 @@ University of California, Santa Cruz
 Experimental Finance Conference | Tucson, 2016
 
 
-
---------------------------------------------------------
-
-# Motivation 
-
 --------------------------------------------------------
 
 ## Motivation 
