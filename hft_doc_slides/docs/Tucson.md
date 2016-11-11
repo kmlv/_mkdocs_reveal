@@ -246,59 +246,16 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 |2nd Period | 74.2% | 25.0% | 22.3% | 0.25 | 85.0 | 0.26% |
 |3rd Period | 79.9% | 19.4% | 11.1% | 0.21 | 91.0 | 0.30% |
 
---------------------------------------------------------
-
-# Next Steps
-
---------------------------------------------------------
-
-## Production
-
-* Results are interesting but far from conclusive.
- 
-* We will run production sessions:
-    * With current parameters.
-    * With other parameters (e.g. stressful periods)
-    * With robustness checks (e.g. not showing other traders’ speed status or spread).
- 
-* We are implementing IEX and EBS variants of the CDA.
- 
-* We need feedback!
-
-<!--These pilot results are encouraging but far from conclusive. More replications of the current setup, sessions with other parameter configurations (e.g. stressful periods), and robustness checks (e.g. not showing other traders’ speed status or spread) are needed. Of course, we must also implement the IEX and EBS variants of the CDA. -->
-
---------------------------------------------------------
-
-## More Realism
-
-1. Variable and asymmetric arrival intensities and jump distributions. 
-
-2. Latent fundamental.
- 
-3. Discrete price grid.
- 
-4. Historical order flow.
- 
-5. Fragmented markets and exchange competition.
- 
-6. Automated market makers and investors. 
-
-<!--Most importantly, we must go beyond the simple BCS environment with more realistic features as follows. -->
-<!--Variable and asymmetric arrival intensities and jump distributions. The Poisson parameter λ_V  can change exogenously during a trading period, and the market buy and sell parameters can take distinct values so that λ_B≠λ_S. The jump distribution can also shift during the trading period. -->
-<!--Latent fundamental. In the simplest environment, traders automatically and immediately liquidate their positions at the known fundamental value V. In more realistic environments, V is not observed, and is an implicit function of the unannounced parameters for the compound Poisson processes generating buy and sell limit orders. Traders cannot lock in profit with a single transaction. Instead, they must earn their profits by round trip transactions. Implementation will require several minor changes in the user interface.-->
-<!--Discrete price grid. Typical microstructure models allow the bid-ask spread to be determined endogenously. In practice, regulatory authorities set the minimum spread and price grid increment, or tick. By imposing a discrete price grid, we expect to see behavior more like that in contemporary financial markets: order books with positive quantities at several adjacent prices, placed by many different traders. -->
-<!--Historical order flow. Instead of experimenter-specified parameters governing exogenous streams of limit orders, those streams will be adapted from historical data from the NYSE or other exchanges. That will allow us to compare the performance of various market formats in times known to be stressful as well as in normal times. -->
-<!--Fragmented markets and exchange competition. An asset can be traded in two different exchanges, both using the same format, but possibly with different tick sizes. Information revealing something about the fundamental value might appear primarily or entirely in one of the exchanges, mimicking the environment that has resulted in cross-market latency arbitrage by high-frequency traders.  Alternatively, traders could trade on two different exchanges with equal information but different formats. Traders may (or may not) choose to migrate to the exchange that has endogenously lower trading costs.-->
-<!--Automated market makers and investors. Human players will compete against pre-programmed bots acting as investors, market makers and/or snipers. (Earlier features blur the artificial distinction between investors, snipers and makers, and bots will eliminate those distinctions.) Bot-only simulations can be used to establish benchmark predictions in environments intractable to analytic methods. Pitting single humans against programmed equilibrium strategies is a useful diagnostic technique when the basic treatments yield puzzling departures from equilibrium. We will also see how groups of humans fare against bots that react to, e.g., recent measures of risk and return, or that implement ‘momentum ignition” or “front-running” strategies. -->
-
 --------------------------------------------------
 
-##  Discussion
+##  Next Steps and Discussion
+
+* Development and Productions.
+
+* More realism in environment. 
 
 * Evidence from the lab and tournaments will improve understanding of
-  financial market design.
-
-    * Of interest to regulators and policy makers.
+  financial market design (help regulation and policy)
 
 * Our infrastructure will be a contribution for future research. 
 
