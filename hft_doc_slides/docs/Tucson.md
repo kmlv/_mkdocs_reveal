@@ -1,4 +1,4 @@
-## High-Frequency Trading in the Laboratory
+## Experiments in High-Frequency Trading
 
 
 Eric Aldrich,  Dan Friedman,  Kristian López-Vargas 
@@ -49,7 +49,7 @@ Experimental Finance Conference | Tucson, 2016
  
 --------------------------------------------------------
 
-##  Market formats: Baseline
+##  Baseline Market Format
 
 * Baseline market format: Continuous Double Auction (CDA) 
 
@@ -61,7 +61,7 @@ Experimental Finance Conference | Tucson, 2016
     
 --------------------------------------------------------
 
-##  Market formats: Alternatives
+##  Alternative Market Formats
      
 * Three alternative formats attempt to reduce the incentives for speed.
    
@@ -140,7 +140,7 @@ $$\smash{\frac{\Delta\delta \, \lambda_V}{\tau} \, \mathbb{E}(J) \, \bar{Q} < c_
 
 * Three 5-minute _trading days_ (periods), per format.
 
-* Each _trading days_ had two markets (groups of four traders). 
+* Each trading day had two markets (groups of four traders). 
     
 * Session lasted approx 100 minutes.
 
@@ -178,9 +178,6 @@ $$\smash{\frac{\Delta\delta \, \lambda_V}{\tau} \, \mathbb{E}(J) \, \bar{Q} < c_
 <!--We found a weak uptrend for snipers in CDA, but the share never exceeded 43%; in equilibrium of the BCS model the sniper share is 75%. In FBA the sniper share trended down, as predicted in BCS equilibrium, and fell below 20% in period 3. Almost all other players were makers; Out shares were always miniscule. The share of traders choosing speed trended up in CDA as predicted, reaching almost ⅔ in period 3, and trended down (also consistent with prediction) in FBA, falling to 11% in period 3. -->
 
 <!--(In our pilot experiment, the ratio is 0.5/5 = 0.10; in more realistic settings it might be closer to 0.01.)-->
-    
-
---------------------------------------------------------
 
 <!------------------------------------------------------------>
 
@@ -205,7 +202,7 @@ $$\smash{\frac{\Delta\delta \, \lambda_V}{\tau} \, \mathbb{E}(J) \, \bar{Q} < c_
 
 <!--![CDA experimental interface](img/CDA.png)-->
 
-<img src="img/CDA.png" style="width:700px; align-content: center">
+<img src="img/CDA.png" style="width:900px; align-content: center">
 
 <!--Eric, the options for resizing in reveal.js depend on the available extensions and markdown "version" [ideas?]-->
 
@@ -220,7 +217,7 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 ## FBA in the Lab
 
-<img src="img/FBA.png" style="width:700px; align-content: center">
+<img src="img/FBA.png" style="width:900px; align-content: center">
 
 <!--![FBA Interface](img/FBA.png)-->
 
@@ -235,16 +232,17 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 
 ## Summary Results 
 
-| | MAKER | SNIPE | Speed | Mean Spread | NumTrades | RMSE |
+| | MAKER | SNIPE | Speed | Spread | NumTrades | RMSE |
 | --- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **CDA** | | | | | | |
-|1st Period | 63.5% | 33.8% | 43.2% | 0.80 | 109.5 | 0.50% |
-|2nd Period | 62.2% | 35.5% | 53.5% | 0.46 | 140.5 | 0.37% |
-|3rd Period | 60.0% | 38.3% | 66.0% | 0.40 | 158.0 | 0.39% |
+|P1 | 63.5% | 33.8% | 43.2% | 0.80 | 109.5 | 0.50% |
+|P2 | 62.2% | 35.5% | 53.5% | 0.46 | 140.5 | 0.37% |
+|P3 | 60.0% | 38.3% | 66.0% | 0.40 | 158.0 | 0.39% |
 | **FBA** | | | | | | |
-|1st Period | 66.9% | 31.9% | 28.5% | 0.44 | 87.5 | 0.42% |
-|2nd Period | 74.2% | 25.0% | 22.3% | 0.25 | 85.0 | 0.26% |
-|3rd Period | 79.9% | 19.4% | 11.1% | 0.21 | 91.0 | 0.30% |
+|P1 | 66.9% | 31.9% | 28.5% | 0.44 | 87.5 | 0.42% |
+|P2 | 74.2% | 25.0% | 22.3% | 0.25 | 85.0 | 0.26% |
+|P3 | 79.9% | 19.4% | 11.1% | 0.21 | 91.0 | 0.30% |
+| | | | | | | |
 
 --------------------------------------------------
 
@@ -272,10 +270,3 @@ The event history box indicates that player 1 is about 48 seconds into the tradi
 * Undergraduate programmers, Morgan Grant and Zach Petersen.
 
 * University of Maryland postdocs, Darrell Hoy and David Malec.
-
-
-<!--
-
-DRAFT ZONE 
-
--------
